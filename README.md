@@ -1,4 +1,4 @@
-# Simple Go TODOs App
+# Simple Go TODOs App using HTMX
 Run:
 ```
 go run main.go

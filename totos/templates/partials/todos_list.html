@@ -1,0 +1,31 @@
+<ul id="todos">
+    {{ .message }}<br>
+    {{ range .todos }}
+        <li>
+            <form>
+                <label>
+                    <input
+                        hx-patch="/todos/{{ .ID }}"
+                        hx-trigger="change"
+                        hx-target="#todos"
+                        hx-swap="outerHTML"
+                        type="checkbox"
+                        name="completed"
+                        value="true"
+                        {{ if .Completed }}
+                        checked
+                        {{ end }}
+                    />
+                    {{ .Title }}
+                </label>
+                <input type="hidden" name="id" value="{{ .ID }}" />
+                <input type="hidden" name="title" value="{{ .Title }}" />
+            </form>
+            <button
+                hx-delete="/todos/{{ .ID }}"
+                hx-target="#todos"
+                hx-swap="outerHTML"
+            >Delete</button>
+        </li>
+    {{ end }}
+</ul>
